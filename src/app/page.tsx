@@ -49,21 +49,6 @@ export default function Home() {
         onChange={handleInputChange}
       />
       <label htmlFor="geckoResult">Processed Gecko Result:</label>
-      <textarea
-        id="geckoResult"
-        value={geckoResult}
-        readOnly 
-        style={{
-          color: 'var(--foreground)',
-          backgroundColor: 'var(--background)',
-          border: '2px solid var(--foreground)',
-          borderRadius: '5px',
-          padding: '5px',
-          width: '50%', 
-          height: '700px', 
-          resize: 'vertical', 
-        }}
-      />
       <button 
         onClick={handleCopyToClipboard} 
         onMouseDown={(e) => e.currentTarget.style.backgroundColor = 'var(--foreground-dark)'} // Darken on click
@@ -82,6 +67,21 @@ export default function Home() {
       >
       Copy to Clipboard
       </button>
+      <textarea
+        id="geckoResult"
+        value={geckoResult}
+        readOnly 
+        style={{
+          color: 'var(--foreground)',
+          backgroundColor: 'var(--background)',
+          border: '2px solid var(--foreground)',
+          borderRadius: '5px',
+          padding: '5px',
+          width: '50%', 
+          height: '700px', 
+          resize: 'vertical', 
+        }}
+      />
     </div>
   );
 }
