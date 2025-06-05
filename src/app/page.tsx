@@ -11,8 +11,7 @@ export default function Home() {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
     setName(inputValue);
-    let result = processor.toGecko(inputValue);
-    result = processor.stringFormatter(result);
+    const result = processor.toGecko(inputValue);
     setGeckoResult(result);
     console.log("Processed value:", result);
   };
@@ -41,7 +40,7 @@ export default function Home() {
           borderRadius: '5px',
           padding: '5px',
           fontSize: '16px',
-          width: '10%', 
+          width: '160px', 
         }}
         name="name"
         minLength={0}

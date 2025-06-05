@@ -8,7 +8,7 @@ export class stringProcessor {
         for(const char of input){
             result += this.findChar(char);
         }
-        return result;
+        return this.stringFormatter(input, result);
     }
 
     private findChar(char: string): string {
@@ -49,18 +49,18 @@ export class stringProcessor {
         return "00";
     }
 
-    public stringFormatter(input: string): string {
+    private stringFormatter(original: string,input: string): string {
         while(input.length < 16){
             input += "0";
         }
         let result = input.substring(0, 8) + " " + input.substring(8, 16) + "\n";
-        result = this.geckoCodeWrapper(result);
+        result = this.geckoCodeWrapper(original, result);
         return result;
     }
 
-    private geckoCodeWrapper(input: string): string {
-        const result = `$Optional: Force Nametag for Local Player [Fizzi]
-*When playing online, nametag "____" will show above your character. ---------------------
+    private geckoCodeWrapper(original: string, input: string): string {
+        const result = `$Optional: Show Friendly Player Indicators [Fizzi, UnclePunch]
+*When playing online, nametag "${original}" will show above your character. A heart will always be shown over your teammate. Helpful for colorblind players to keep track of the players.
 *Will not cause desyncs when playing online
 C20355B4 00000008 #Force Nametag
 3C608048 80639D30
@@ -84,15 +84,39 @@ ${input}3C608048 80639D30
 4E800421 5463063E
 3D808023 618C754C
 7D8903A6 4E800421
+60000000 00000000
+C22FC9E4 0000001D #Online/Optional/ShowAllyIndicator/ShowAllyIndicator.asm
+3B840000 7C0802A6
+90010004 9421FF50
+BE810008 7C7E1B78
+3C608048 80639D30
+5463443E 2C030208
+408200A4 3D808016
+618CB168 7D8903A6
+4E800421 2C030000
+4182008C 806DB61C
+88630000 7C03F000
+4182007C 3D808003
+618C3370 7D8903A6
+4E800421 7C7D1B78
+7FC3F378 3D808003
+618C3370 7D8903A6
+4E800421 7C03E800
+4082004C 1C7E000E
+3C808046 6084B6A0
+7CA32214 8865003C
+60630010 9865003C
+1C7D0004 7C63FA14
+C0230064 BA810008
+800100B4 382100B0
+7C0803A6 3D80802F
+618CCA84 7D8903A6
+4E800420 7FC3F378
+BA810008 800100B4
+382100B0 7C0803A6
 60000000 00000000`;
     
         return result;
     }
-
-    // then break it into portions of 8 and 8 (fill with 00) and break. done as a seperate call
-
-
-    // if longer than one line return an error saying it needs to be fewer chars (non english takes more space)
-
 }
   
