@@ -53,7 +53,7 @@ export class stringProcessor {
         while(input.length < 16){
             input += "0";
         }
-        let result = input.substring(0, 8) + " " + input.substring(8, 16) + "\n";
+        let result = input.substring(0, 8) + " " + input.substring(8, 14) + "00\n";
         result = this.geckoCodeWrapper(original, result);
         return result;
     }
