@@ -35,7 +35,7 @@ export const alphabet: CharacterEntry[] = [
   { value: "62", character: "b" },
   { value: "63", character: "c" },
   { value: "64", character: "d" },
-  { value: "64", character: "e" },
+  { value: "65", character: "e" },
   { value: "66", character: "f" },
   { value: "67", character: "g" },
   { value: "68", character: "h" },
